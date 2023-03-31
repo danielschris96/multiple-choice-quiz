@@ -3,21 +3,28 @@
 }
 
 body {
-    background-color: rgb(75, 75, 75);
+    background-color: rgb(122, 148, 147);
 }
 
 header h1 {
     color: white;
     text-align: center;
     font-size: 400%;
-    margin-bottom: 20%;
+    margin-bottom: 20vh;
 }
 
-p {
+#question-box {
     color: white;
     text-align: center;
     border: 2px solid white;
     width: 500px;
     height: 300px;
     margin: auto;
+}
+
+#time-remaining {
+    color: white;
+    font-size: larger;
+    text-align: center;
+    margin-top: 20vh;
 }

@@ -1,0 +1,23 @@
+* {
+    
+}
+
+body {
+    background-color: rgb(75, 75, 75);
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+    font-size: 400%;
+    margin-bottom: 20%;
+}
+
+p {
+    color: white;
+    text-align: center;
+    border: 2px solid white;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+}

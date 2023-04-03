@@ -26,7 +26,7 @@ border-radius: 3px;
 padding: 5px;
 }
 
-#container {
+#container, #leaderboard {
     color: white;
     border: 2px solid white;
     border-radius: 10px;
@@ -40,10 +40,11 @@ padding: 5px;
     color: white;
     font-size: larger;
     text-align: center;
-    margin-top: 20vh;
+    margin-top: 10vh;
+    font-size: 30px;
 }
 
-#question-box {
+#question-box, h2 {
     border-bottom: 2px solid white;
     width: 490px;
     font-size: 20px;
@@ -72,4 +73,8 @@ li button:hover {
 
 #start:hover {
     box-shadow: 0 0 10px white;
+}
+
+h2 {
+    text-align: center;
 }

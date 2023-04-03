@@ -15,15 +15,29 @@ var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
+var container = document.querySelector('#container');
+var timerVisible = document.querySelector('#time-remaining');
+var leaderboard = document.querySelector('#leaderboard');
+var finalScoreEl = document.querySelector('#final-score');
+var startButton = document.querySelector('#start');
 var answerCounter = 0;
 var correctAnswers = ["#answer1", "#answer3", "#answer2", "#answer2", "#answer4", "#answer4", "#answer1", "#answer4"];
 var score = 0;
+
+container.style.visibility = "hidden";
+timerVisible.style.visibility = "hidden";
+leaderboard.style.display = "none";
+
+console.log(answerCounter);
 
 document.addEventListener("click", function(event) {
     var element = event.target
     if (element.matches("#start")) {
         startTimer();
         inputQuestion();
+        container.style.visibility = "visible";
+        timerVisible.style.visibility = "visible";
+        startButton.style.display = "none";
     }
 })
 
@@ -32,7 +46,7 @@ function startTimer() {
     var timeInterval = setInterval(function() {
         secondsLeft--;
         timer.textContent = secondsLeft;
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0) {
             clearInterval(timeInterval);
             youLost();
         }
@@ -40,11 +54,17 @@ function startTimer() {
 }
 
 function nextQuestion() {
+        
+    if (answerCounter < 8) {
         questionInput.textContent = totalList[answerCounter][0];
         answer1.textContent = totalList[answerCounter][1];
         answer2.textContent = totalList[answerCounter][2];
         answer3.textContent = totalList[answerCounter][3];
         answer4.textContent = totalList[answerCounter][4];
+    }
+    else {
+        youWin();
+    }
 }
 
 function inputQuestion() {
@@ -66,13 +86,21 @@ function inputQuestion() {
 }
 
 function youLost() {
-    questionInput.textContent = "You lost. Click Start to try again.";
+    questionInput.textContent = "You lost. Refresh page to try again.";
     answer1.style.display = "none";
     answer2.style.display = "none";
     answer3.style.display = "none";
     answer4.style.display = "none";
+    timerVisible.style.display = "none";
 }
 
+function youWin() {
+    var finalScore = secondsLeft 
+    container.style.display = "none";
+    timerVisible.style.display = "none";
+    leaderboard.style.display = "block";
+    finalScoreEl.textContent = finalScore
+}
 
 
 // function checkAnswer() {

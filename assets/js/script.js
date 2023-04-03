@@ -15,9 +15,9 @@ var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
-var answerCounter = 0
-var correctAnswers = [1, 3, 2, 2, 4, 4, 1, 4];
-
+var answerCounter = 0;
+var correctAnswers = ["#answer1", "#answer3", "#answer2", "#answer2", "#answer4", "#answer4", "#answer1", "#answer4"];
+var score = 0;
 
 document.addEventListener("click", function(event) {
     var element = event.target
@@ -55,7 +55,7 @@ function inputQuestion() {
     answer4.textContent = question1[4];
     document.addEventListener("click", function(event) {
         var element = event.target;
-        if (element.matches("#answer1")) {
+        if (element.matches(correctAnswers[answerCounter])) {
             answerCounter = answerCounter + 1;
             nextQuestion();
         }
@@ -66,7 +66,7 @@ function inputQuestion() {
 }
 
 function youLost() {
-    questionInput.textContent = "You lost. Click Start to play again.";
+    questionInput.textContent = "You lost. Click Start to try again.";
     answer1.style.display = "none";
     answer2.style.display = "none";
     answer3.style.display = "none";

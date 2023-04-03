@@ -15,12 +15,15 @@ var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
+var answerCounter = 0
+var correctAnswers = [1, 3, 2, 2, 4, 4, 1, 4];
+
 
 document.addEventListener("click", function(event) {
     var element = event.target
     if (element.matches("#start")) {
-        startTimer()
-        inputQuestion()
+        startTimer();
+        inputQuestion();
     }
 })
 
@@ -36,7 +39,11 @@ function startTimer() {
 }
 
 function nextQuestion() {
-    console.log("good");
+        questionInput.textContent = totalList[answerCounter][0];
+        answer1.textContent = totalList[answerCounter][1];
+        answer2.textContent = totalList[answerCounter][2];
+        answer3.textContent = totalList[answerCounter][3];
+        answer4.textContent = totalList[answerCounter][4];
 }
 
 function inputQuestion() {
@@ -45,15 +52,18 @@ function inputQuestion() {
     answer2.textContent = question1[2];
     answer3.textContent = question1[3];
     answer4.textContent = question1[4];
-
-    if (document.addEventListener("click", function(event) {
+document.addEventListener("click", function(event) {
         var element = event.target;
         if (element.matches("#answer1")) {
+            answerCounter = answerCounter + 1;
             nextQuestion();
         }
-    }))
+    })
 }
 
+function checkAnswer() {
+
+}
 
 
 /* Fundamentals questions:

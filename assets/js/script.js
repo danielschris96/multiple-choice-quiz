@@ -33,7 +33,8 @@ function startTimer() {
         secondsLeft--;
         timer.textContent = secondsLeft;
         if (secondsLeft === 0) {
-            clearInterval(timeInterval)
+            clearInterval(timeInterval);
+            youLost();
         }
 }, 1000)
 }
@@ -52,18 +53,33 @@ function inputQuestion() {
     answer2.textContent = question1[2];
     answer3.textContent = question1[3];
     answer4.textContent = question1[4];
-document.addEventListener("click", function(event) {
+    document.addEventListener("click", function(event) {
         var element = event.target;
         if (element.matches("#answer1")) {
             answerCounter = answerCounter + 1;
             nextQuestion();
         }
+        else {
+            secondsLeft = secondsLeft - 10;
+        }
     })
 }
 
-function checkAnswer() {
-
+function youLost() {
+    questionInput.textContent = "You lost. Click Start to play again.";
+    answer1.style.display = "none";
+    answer2.style.display = "none";
+    answer3.style.display = "none";
+    answer4.style.display = "none";
 }
+
+
+
+// function checkAnswer() {
+//     if ()
+// }
+
+
 
 
 /* Fundamentals questions:

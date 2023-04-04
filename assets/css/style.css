@@ -108,6 +108,8 @@ h2, form {
 
 #leaderboard-box {
     display: flex;
-
 }
 
+#leaderboard p {
+    font-size: larger;
+}

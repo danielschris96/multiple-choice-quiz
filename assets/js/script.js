@@ -17,18 +17,20 @@ var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
 var container = document.querySelector('#container');
 var timerVisible = document.querySelector('#time-remaining');
-var leaderboard = document.querySelector('#leaderboard');
+var saveScore = document.querySelector('#save-score');
 var finalScoreEl = document.querySelector('#final-score');
 var startButton = document.querySelector('#start');
+var leaderboard = document.querySelector('#leaderboard');
+var initials = document.querySelector('#initials');
+var submitBtn = document.querySelector('#submit');
 var answerCounter = 0;
 var correctAnswers = ["#answer1", "#answer3", "#answer2", "#answer2", "#answer4", "#answer4", "#answer1", "#answer4"];
 var score = 0;
 
 container.style.visibility = "hidden";
 timerVisible.style.visibility = "hidden";
-leaderboard.style.display = "none";
-
-console.log(answerCounter);
+saveScore.style.display = "none";
+// leaderboard.style.display = "none";
 
 document.addEventListener("click", function(event) {
     var element = event.target
@@ -49,6 +51,9 @@ function startTimer() {
         if (secondsLeft <= 0) {
             clearInterval(timeInterval);
             youLost();
+        }
+        else if (answerCounter === 8) {
+            clearInterval(timeInterval);
         }
 }, 1000)
 }
@@ -73,7 +78,7 @@ function inputQuestion() {
     answer2.textContent = question1[2];
     answer3.textContent = question1[3];
     answer4.textContent = question1[4];
-    document.addEventListener("click", function(event) {
+    container.addEventListener("click", function(event) {
         var element = event.target;
         if (element.matches(correctAnswers[answerCounter])) {
             answerCounter = answerCounter + 1;
@@ -98,15 +103,23 @@ function youWin() {
     var finalScore = secondsLeft 
     container.style.display = "none";
     timerVisible.style.display = "none";
-    leaderboard.style.display = "block";
-    finalScoreEl.textContent = finalScore
+    saveScore.style.display = "block";
+    finalScoreEl.textContent = finalScore;
+    
+}
+
+function scoreSubmit() {
+    saveScore.style.display = "none";
+    console.log("so far so good");
+    console.log(initials.value);
+    localStorage.setItem(initials.value, secondsLeft +1)
 }
 
 
-// function checkAnswer() {
-//     if ()
-// }
-
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    scoreSubmit();
+})
 
 
 

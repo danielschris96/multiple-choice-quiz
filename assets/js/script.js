@@ -23,6 +23,9 @@ var startButton = document.querySelector('#start');
 var leaderboard = document.querySelector('#leaderboard');
 var initials = document.querySelector('#initials');
 var submitBtn = document.querySelector('#submit');
+var resestBtn = document.querySelector('#reset-scores');
+var initialsColumn = document.querySelector('#initials-column');
+var scoresColumn = document.querySelector('#scores-column');
 var answerCounter = 0;
 var correctAnswers = ["#answer1", "#answer3", "#answer2", "#answer2", "#answer4", "#answer4", "#answer1", "#answer4"];
 var score = 0;
@@ -30,7 +33,8 @@ var score = 0;
 container.style.visibility = "hidden";
 timerVisible.style.visibility = "hidden";
 saveScore.style.display = "none";
-// leaderboard.style.display = "none";
+leaderboard.style.display = "none";
+
 
 document.addEventListener("click", function(event) {
     var element = event.target
@@ -110,9 +114,19 @@ function youWin() {
 
 function scoreSubmit() {
     saveScore.style.display = "none";
-    console.log("so far so good");
-    console.log(initials.value);
-    localStorage.setItem(initials.value, secondsLeft +1)
+    localStorage.setItem(initials.value, secondsLeft +1);
+    leaderboard.style.display = "block";
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage.getItem(key);
+    var listItemInitials = document.createElement('li');
+    var listItemScores = document.createElement('li');
+    listItemInitials.textContent = key;
+    listItemScores.textContent = value;
+    initialsColumn.appendChild(listItemInitials);
+    scoresColumn.appendChild(listItemScores);
+  }
+
 }
 
 
@@ -121,7 +135,9 @@ submitBtn.addEventListener("click", function(event) {
     scoreSubmit();
 })
 
-
+resestBtn.addEventListener("click", function(event) {
+    localStorage.clear();
+})
 
 /* Fundamentals questions:
 

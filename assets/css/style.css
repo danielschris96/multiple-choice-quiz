@@ -71,15 +71,11 @@ li button:hover {
     font-weight: bold;
 }
 
-#start:hover {
+#start:hover, #reset-scores:hover {
     box-shadow: 0 0 10px white;
 }
 
-h2 {
-    text-align: center;
-}
-
-form {
+h2, form {
     text-align: center;
 }
 
@@ -88,7 +84,7 @@ form {
     margin-right: 20px;
 }
 
-/* #leaderboard {
+#leaderboard {
     color: white;
     border: 2px solid white;
     border-radius: 10px;
@@ -96,7 +92,22 @@ form {
     height: 300px;
     margin: auto;
     background-color: var(--dark-green);
-    display: flex;
-    flex-direction: row;
+    display: inline;
     list-style-type: none;
-} */
+    text-align: center;
+    align-items: center;
+}
+
+#reset-scores {
+
+    margin-top: 20px;
+    padding: 5px;
+    font-size: 22px;
+    border-radius: 3px;
+}
+
+#leaderboard-box {
+    display: flex;
+
+}
+
